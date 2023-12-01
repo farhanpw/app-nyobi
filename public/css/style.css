@@ -1,0 +1,28 @@
+.tengahkan {
+    text-align: center;
+}
+
+p {
+    font-family: "Courier New", monospace;
+}
+
+body {
+    background-color: #eee3cb;
+    font-family: "Poppins", sans-serif;
+}
+
+.brown {
+    background-color: #967e76;
+}
+
+.peach {
+    background-color: #d7c0ae;
+}
+
+.navbar-custom {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-shadow: 3px 3px 3px #ababab;
+}
+
+
