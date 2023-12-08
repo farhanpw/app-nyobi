@@ -18,8 +18,6 @@ return new class extends Migration
             $table->foreignId('product_id');
 
             $table->integer('amount');
-            $table->string('size');
-            $table->string('variant');
             $table->integer('total');
             $table->integer('is_checkout');
             $table->timestamps();

@@ -10,6 +10,8 @@ class Member extends Authenticatable
 {
     use HasFactory;
     protected $guarded = [];
+    
+    // protected $table = 'users';
 
     public function order()
     {

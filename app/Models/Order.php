@@ -12,7 +12,7 @@ class Order extends Model
 
     public function member()
     {
-        return $this->belongsTo(Member::class, 'id_member', 'id');
+        return $this->belongsTo(Member::class, 'member_id', 'id');
     }
 
     public function payment()

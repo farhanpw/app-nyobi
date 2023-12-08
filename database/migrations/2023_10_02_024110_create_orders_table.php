@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('member_id');
             $table->integer('invoice');
             $table->String('status');
-            $table->integer('grand_total');
+            $table->integer('grand_total')->nullable();
             $table->timestamps();
         });
 
@@ -25,8 +25,6 @@ return new class extends Migration
             $table->integer('order_id');
             $table->integer('product_id');
             $table->integer('amount');
-            $table->string('size');
-            $table->string('color');
             $table->integer('total');
             $table->timestamps();
         });

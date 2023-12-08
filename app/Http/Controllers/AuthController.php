@@ -31,7 +31,6 @@ class AuthController extends Controller
                 'message' => 'login berhasil',
                 'token' => $token
             ]);
-            // make repeat session login
             $request->session()->regenerate();
 
             if (auth()->user()->role_id === 1) {
@@ -71,18 +70,11 @@ class AuthController extends Controller
                 'message' => 'email atau password salah'
             ]);
         }
-
-        // jika email atau password salah
-        // kirimkan session error
         return back()->with('error', 'email atau password salah');
     }
 
     public function logout(Request $request)
     {
-        // Auth::guard('webmember')->logout();
-        // Session::flush();
-
-        // return redirect('/');
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -116,16 +108,5 @@ class AuthController extends Controller
         Session::flash('success', 'Account succescfully created!');
         return redirect('/login');
     }
-
-
-
-    // protected function respondWithToken($token)
-    // {
-    //     return response()->json([
-    //         'access_token' => $token,
-    //         'token_type' => 'bearer',
-    //         'expires_in' => auth()->factory()->getTTL() * 60
-    //     ]);
-    // }
 
 }

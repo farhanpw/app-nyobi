@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
@@ -27,23 +26,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-//  if user not login
-
 //Home
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/products', [HomeController::class, 'products']);
 Route::get('/product/{id}', [HomeController::class, 'product']);
-Route::get('/search', [HomeController::class, 'search'])->name('search');
-Route::get('/cart', [HomeController::class, 'cart']);
-Route::get('/checkout', [HomeController::class, 'checkout']);
-Route::get('/orders', [HomeController::class, 'orders']);
+Route::get('/action', [HomeController::class, 'action'])->name('action');
 Route::get('/about', [HomeController::class, 'about']);
-Route::get('/contact', [HomeController::class, 'contact']);
-Route::get('/faq', [HomeController::class, 'faq']);
 
 //auth
 Route::group(['middleware' => 'guest'], function () {
@@ -91,24 +79,15 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
 
 // for Member
 Route::group(['middleware' => ['auth', 'checkrole:2']], function () {
+    Route::get('/profil', [HomeController::class, 'profil']);
     Route::get('/cart', [HomeController::class, 'cart']);
     Route::post('/add_to_cart', [HomeController::class, 'add_to_cart']);
     Route::get('/delete_from_cart/{cart}', [HomeController::class, 'delete_from_cart']);
     Route::get('/get_kota/{id}', [HomeController::class, 'get_kota']);
+    Route::get('/checkout', [HomeController::class, 'checkout']);
     Route::get('/get_ongkir/{destination}/{weight}', [HomeController::class, 'get_ongkir']);
     Route::post('/checkout_orders', [HomeController::class, 'checkout_orders']);
+    Route::get('/orders', [HomeController::class, 'orders']);
     Route::post('/payments', [HomeController::class, 'payments']);
     Route::post('/pesanan_selesai/{order}', [HomeController::class, 'pesanan_selesai']);
 });
-
-// auth
-// Route::get('login', [AuthController::class, 'index'])->name('login');
-// Route::post('login', [AuthController::class, 'login']);
-// Route::get('logout', [AuthController::class, 'logout']);
-
-// Route::get('login_member', [AuthController::class, 'login_member']);
-// Route::post('login_member', [AuthController::class, 'login_member_action']);
-// Route::get('logout_member', [AuthController::class, 'logout_member']);
-
-Route::get('register_member', [AuthController::class, 'register_member']);
-Route::post('register_member', [AuthController::class, 'register_member_action']);
